@@ -1,13 +1,21 @@
 // 3RD PARTY MODULES
 import express from "express";
+import {
+  deleteUser,
+  followUser,
+  getAllUsers,
+  getUser,
+  unFollowUser,
+  updateUser,
+} from "../controllers/user.js";
 // APP MODULES
-import { login, register } from "../controllers/auth.js";
 
 // ROUTER
 const router = express.Router();
 
-router.route("/register").post(register);
-router.route("/login").post(login);
-
+router.route("/").get(getAllUsers);
+router.route("/:id").put(updateUser).delete(deleteUser).get(getUser);
+router.route("/:id/follow").put(followUser);
+router.route("/:id/unfollow").put(unFollowUser);
 // EXPORT
 export default router;

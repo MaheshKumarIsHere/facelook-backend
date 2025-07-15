@@ -6,7 +6,8 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
 // APP MODULES
-import authRouter from "./routes/userRoutes.js";
+import authRouter from "./routes/authRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 // CONSTANTS
 const DOTENV_FILE_PATH = path.join(import.meta.dirname, "../.env");
@@ -33,6 +34,7 @@ app.get("/", (req, res, next) => {
   res.status(200).json({ message: "test working" });
 });
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
 
 // EXPORT
 export default app;

@@ -43,6 +43,22 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    desc: {
+      type: String,
+      maxLength: [100, "desc should be less than 100chars"],
+    },
+    city: {
+      type: String,
+      maxLength: [50, "city should be less than 50chars"],
+    },
+    from: {
+      type: String,
+      maxLength: [50, "city should be less than 50chars"],
+    },
+    relationship: {
+      type: Number,
+      enum: [1, 2, 3],
+    },
   },
   {
     timestamps: true,
