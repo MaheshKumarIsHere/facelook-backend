@@ -4,6 +4,7 @@ import path from "node:path";
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import helmet from "helmet";
 // APP MODULES
 
 // CONSTANTS
@@ -16,13 +17,12 @@ const app = express();
 dotenv.config({ path: DOTENV_FILE_PATH });
 
 // MIDDLEWARES
-console.log(process.env.NODE_ENV);
+app.use(express.json());
+app.use(helmet());
 if (process.env.NODE_ENV === "development") {
-  console.log("dev");
   app.use(morgan("dev"));
 }
 if (process.env.NODE_ENV === "production") {
-  console.log("pro");
   app.use(morgan("tiny"));
 }
 
