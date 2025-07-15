@@ -1,5 +1,6 @@
 // 3RD PARTY MODULES
 import mongoose from "mongoose";
+import validator from "validator";
 
 const userSchema = new mongoose.Schema(
   {
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "email is required!"],
       unique: true,
       maxLength: [255, "email should be less than 255 chars"],
+      validate: [validator.isEmail, "email should be valid"],
     },
     password: {
       type: String,
