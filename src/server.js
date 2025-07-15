@@ -1,8 +1,12 @@
+// CORE MODULES
 import http from "node:http";
+// APP MODULES
 import app from "./app.js";
 
+// SERVER CREATION
 const server = http.createServer(app);
 
-server.listen(5555, () => {
-  console.log(`Server is running 5555`);
+// SERVER LISTENER
+server.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
