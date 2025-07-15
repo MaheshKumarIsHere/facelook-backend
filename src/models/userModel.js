@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       maxLength: [255, "email should be less than 255 chars"],
       validate: [validator.isEmail, "email should be valid"],
     },
-    password: {
+    passwordHash: {
       type: String,
       required: [true, "password is required!"],
       minLength: [8, "password should be at least 8 chars"],

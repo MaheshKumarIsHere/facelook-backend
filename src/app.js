@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
 // APP MODULES
+import authRouter from "./routes/userRoutes.js";
 
 // CONSTANTS
 const DOTENV_FILE_PATH = path.join(import.meta.dirname, "../.env");
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === "production") {
 app.get("/", (req, res, next) => {
   res.status(200).json({ message: "test working" });
 });
+app.use("/api/v1/auth", authRouter);
 
 // EXPORT
 export default app;
