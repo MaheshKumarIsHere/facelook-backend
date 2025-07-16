@@ -1,7 +1,7 @@
 // 3RD PARTY MODULES
 import express from "express";
 // APP MODULES
-import { login, register } from "../controllers/auth.js";
+import { login, register } from "../controllers/authControllers.js";
 
 // ROUTER
 const router = express.Router();

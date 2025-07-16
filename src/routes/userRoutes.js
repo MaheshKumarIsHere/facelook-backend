@@ -7,7 +7,7 @@ import {
   getUser,
   unFollowUser,
   updateUser,
-} from "../controllers/user.js";
+} from "../controllers/userControllers.js";
 // APP MODULES
 
 // ROUTER
