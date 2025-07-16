@@ -36,5 +36,10 @@ app.get("/", (req, res, next) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 
+// GLOBAL ERROR HANDLER
+app.use((err, req, res, next) => {
+  res.status(500).json(err);
+});
+
 // EXPORT
 export default app;
