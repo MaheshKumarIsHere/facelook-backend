@@ -14,6 +14,6 @@ const router = express.Router();
 router.route("/").get(getAllPosts).post(createPost);
 router.route("/:id").put(updatePost).delete(deletePost).get(getPost);
 router.route("/:id/like").put(likePost);
-router.route("/timeline").post(postTimeline);
+router.route("/timeline/:userId").get(postTimeline);
 
 export default router;

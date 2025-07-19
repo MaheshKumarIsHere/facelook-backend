@@ -54,31 +54,33 @@ export const getUser = async (req, res, next) => {
 export const followUser = async (req, res, next) => {
   const user = await User.findById(req.params.id);
   const requestedUser = await User.findById(req.body.userId);
-  if (!user || requestedUser) {
+  if (!user || !requestedUser) {
     throw new Error("User not found or not exists");
   }
   if (!user.followers.includes(req.body.userId)) {
     user.followers.push(req.body.userId);
   }
   if (!requestedUser.followings.includes(req.params.id)) {
-    requestedUser.followings.push();
+    requestedUser.followings.push(req.params.id);
   }
   await user.save();
   await requestedUser.save();
 
   res.status(400).json(user);
 };
+
 // REMOVE FOLLOWERS
 export const unFollowUser = async (req, res, next) => {
   const user = await User.findById(req.params.id);
   const requestedUser = await User.findById(req.body.userId);
+
   if (!user || !requestedUser) {
     throw new Error("User not found or not exists");
   }
-  if (!user.followers.includes(req.body.userId)) {
+  if (user.followers.includes(req.body.userId)) {
     user.followers = user.followers.filter((item) => item !== req.body.userId);
   }
-  if (!requestedUser.followings.includes(req.params.id)) {
+  if (requestedUser.followings.includes(req.params.id)) {
     requestedUser.followings = requestedUser.followings.filter(
       (item) => item !== req.params.id
     );
