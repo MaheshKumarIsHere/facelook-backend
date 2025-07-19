@@ -5,6 +5,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
+import cors from "cors";
 // APP MODULES
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
@@ -22,6 +23,7 @@ dotenv.config({ path: DOTENV_FILE_PATH });
 // MIDDLEWARES
 app.use(express.json());
 app.use(helmet());
+app.use(cors({ origin: "http://localhost:5173" }));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
